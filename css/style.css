@@ -10,13 +10,19 @@ body, html {
 section, footer {
     margin: 1rem;
     padding: 1rem;
-    color: hotpink;
-    background-color: yellow;
+    color: white;
+    background-color: lawngreen;
     border-radius: 1em;
 }
-  
+
+img {
+    border-radius: 50%;
+    width: 5em;
+    height: 5em;
+}
+
 .bgimg {
-    background-color: cyan;
+    background-color: black;
     height: 100%;
     position: relative;
     opacity: 0.85;
