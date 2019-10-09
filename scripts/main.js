@@ -11,4 +11,21 @@ function find_total_items() {
     document.querySelector('#result').innerHTML = total_num
 }
 
-document.querySelector('#submit').addEventListener('click', find_total_items)
+function store(){
+    const first_name = document.querySelector('#fname').value
+    const last_name = document.querySelector('#lname').value
+    const email = document.querySelector('#email').value
+    const subject = document.querySelector('#subject').value
+
+    localStorage.setItem('First Name: ', first_name)
+    localStorage.setItem('Last Name: ', last_name)
+    localStorage.setItem('Email: ', email)
+    localStorage.setItem('Subject: ', subject)
+}
+
+if (document.querySelector('#submit') != null){
+    document.querySelector('#submit').addEventListener('click', find_total_items)
+}
+if (document.querySelector('#contact') != null){
+    document.querySelector('#contact').addEventListener('click', store)
+}
