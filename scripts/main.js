@@ -1,14 +1,33 @@
-function calc_numitems(numItems, numBags){
-    return numItems * numBags
+function calc_time(dist){
+    return dist / 299792458.0
 }
 
-function find_total_items() {
-    const items = document.querySelector("#input1").value
-    const bags = document.querySelector("#input2").value
+function calc_dist(time){
+    return time * 299792458.0
+}
 
-    const total_num = calc_numitems(items, bags)
+function change_dist() {
+    const time = parseFloat(document.querySelector("#input1").value)
 
-    document.querySelector('#result').innerHTML = total_num
+    const dist = calc_dist(time)
+
+    if (isNaN(time)){
+        document.getElementById('input2').value = ""
+    } else {
+        document.getElementById('input2').value = dist
+    }
+}
+
+function change_time() {
+    const dist = parseFloat(document.querySelector("#input2").value)
+
+    const time = calc_time(dist)
+    
+    if (isNaN(dist)){
+        document.getElementById('input1').value = ""
+    } else {
+        document.getElementById('input1').value = time
+    }
 }
 
 function store(){
@@ -23,7 +42,9 @@ function store(){
     localStorage.setItem('Subject: ', subject)
 }
 
-document.querySelector('#poke_sprite').style.visibility = "hidden"
+if (document.querySelector('#poke_sprite') != null){
+    document.querySelector('#poke_sprite').style.visibility = "hidden"
+}
 
 async function get_random_pokemon(){
     let poke_num = Math.floor((Math.random() * 807) + 1)
@@ -40,14 +61,16 @@ async function get_random_pokemon(){
     document.querySelector('#poke_sprite').src = poke_sprite
 }
 
+if (document.querySelector('#input1') != null){
+    document.querySelector('#input1').addEventListener('input', change_dist)
+}
 
+if (document.querySelector('#input2') != null){
+    document.querySelector('#input2').addEventListener('input', change_time)
+}
 
 if (document.querySelector('#get_pokemon') != null){
     document.querySelector('#get_pokemon').addEventListener('click', get_random_pokemon)
-}
-
-if (document.querySelector('#submit') != null){
-    document.querySelector('#submit').addEventListener('click', find_total_items)
 }
 
 if (document.querySelector('#contact') != null){
