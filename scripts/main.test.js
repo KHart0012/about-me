@@ -1,9 +1,16 @@
 QUnit.module('Main', {})
 
-QUnit.test( "Test calc_numitems", function( assert ) {
-    assert.equal(calc_numitems(3, 4), 12, "3 items per bag, 4 bags, 12 total");
+QUnit.test( "Test Time", function( assert ) {
+    assert.equal(calc_time(299792458), 1, "The speed of light");
+    assert.equal(calc_time(1000000000000), 3335.6409519815206, "Time it takes light to travel 1 billion kilometers");
+    assert.equal(calc_time(0), 0, "Light should travel 0 meters in 0 seconds");
 });
 
+QUnit.test( "Test Distance", function( assert ) {
+    assert.equal(calc_dist(3), 899377374, "Light travels ~900 Thousand Kilometers in 3 seconds");
+    assert.equal(calc_dist(1), 299792458, "Light travels ~300 Thousand Kilometers in 1 seconds");
+    assert.equal(calc_dist(0), 0, "Light should travel 0 meters in 0 seconds");
+});
 
 window.addEventListener('load', () => {
     const appURL = '../index.html'
